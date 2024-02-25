@@ -1,0 +1,44 @@
+services:
+  # Mysql
+  db:
+    container_name: mysql-database
+    image: mysql:5.7
+    ports:
+      - 3306:3306
+    environment:
+      - MYSQL_DATABASE=ctf
+      - MYSQL_USER=ctf
+      - MYSQL_PASSWORD=ctf
+      - MYSQL_ROOT_PASSWORD=ctf
+    volumes:
+      - database:/var/lib/mysql
+    networks:
+      - app
+
+  # App
+  server:
+    container_name: app
+    build:
+      context: .
+      args:
+        - NODE_VERSION=20.11.1
+    environment:
+      - NODE_ENV=production
+      - DB_HOST=db
+      - DB_DATABASE=ctf
+      - DB_PASSWORD=ctf
+      - DB_USER=ctf
+    volumes:
+      - server:/usr/src/app
+    ports:
+      - 3000:3000
+    depends_on:
+      - db
+    networks:
+      - app
+networks:
+  app:
+    driver: bridge
+volumes:
+  server:
+  database:
